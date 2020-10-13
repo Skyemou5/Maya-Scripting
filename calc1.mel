@@ -1,0 +1,99 @@
+float $arr[] = {1,2,3};
+
+global proc float Calculator(float $arr[], string $opperation)
+{
+    float $return;
+    
+    if($operation == "add")
+        $return = addArr($arr);
+    else if ($operation == "subtract")
+        $return = subArr($arr);
+    else if ($operation == "multiply")
+        $return = nultArr($arr);
+    else if ($operation == "divide")
+        $return = divArr($arr);
+    else if ($operation == "power")
+        $return = numPow($arr);
+    else if ($operation == "mode")
+        $return = Mode($arr);
+}
+
+
+proc float addArr(float $arr[])
+{
+    float $c = 0;
+    for($i = 0; $i < size($arr); ++$i)
+    {
+        $c += $arr[$i];
+    }
+    return $c;
+}
+
+proc float subArr(float $arr[])
+{
+    float $c = 0;
+    for($i = 0; $i < size($arr); ++$i)
+    {
+        $c -= $arr[$i];
+    }
+    return $c;
+}
+
+proc float multArr(float $arr[])
+{
+    float $c = 1;
+    for($i = 0; $i < size($arr); ++$i)
+    {
+        $c *= $arr[$i];
+    }
+    return $c;    
+}
+
+proc float divArr(float $arr[])
+{
+    float $c = 1;
+    for($i = 0; $i < size($arr); ++$i)
+    {
+        $c /= $arr[$i];
+    }
+    return $c;    
+}
+
+proc float numPow(float $num, int $pwn)
+{
+    float $c = 0.9;
+    $c = pow($num,$pwn);
+    return $c;
+}
+
+proc float meanArr(float $arr[])
+{
+    float $c = multArr($arr);
+    float $d = $c/size($arr);
+    return $d;
+}
+
+ proc float Mode(float $arr[])
+ {
+    float $Most = 0;
+    float $HowManyMost = 0;
+    float $TempHowManyMost = 0;
+    
+    for($i = 0; $i < size($arr); $i++)
+    {
+       $TempHowManyMost = 0;
+        for($j = 0; $j < size($arr); $j++)
+        {
+            if ($Numbers[$j] == $arr[$i])
+            {
+                $TempHowManyMost++;
+            }
+            if ($TempHowManyMost > $HowManyMost)
+            {
+                $HowManyMost = $TempHowManyMost;
+                $Most = $arr[$j];
+            }
+        }
+    }
+    return $Most;
+ }

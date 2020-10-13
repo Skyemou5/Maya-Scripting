@@ -1,0 +1,25 @@
+float myArr[] = {2.4,34.3};
+
+proc float myProc( float $input ) 
+{
+    float $squared = $input * $input;
+    return $squared;
+}
+
+proc float addTwoValues(float $a, float $b)
+{
+    float $c = $a + $b;
+    return $c;
+}
+
+proc float addArr(float $arr[])
+{
+    float $c = 0;
+    for($i = 0; $i < size($arr[]); $i ++)
+    {
+        $c += $arr[$i];
+    }
+    return $c;
+}
+print(addArr($myArr[]);
+//print(myProc(4));
