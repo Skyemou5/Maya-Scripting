@@ -1,0 +1,37 @@
+// color
+color $col = (10,0,0);
+$selection = `ls -sl`;
+int $colorIn = 3;
+$controls[] = {select -r nurbsCircle3,select -r nurbsCircle1,select -r nurbsCircle2};
+
+
+global proc color ChangeColor(int $colorIndex)
+{
+    if ($colorIndex >= 32)
+        error "Color index out-of-range (must be less than 32)";
+    
+    $selection = `ls -sl`;
+    if (size($selection) == 0)
+        error "No objects selected";
+    
+    string $shapes[];
+    for ($obj in $selection) {
+        $relatives = `listRelatives -shapes $obj`;
+        for ($rel in $relatives)
+            $shapes[size($shapes)] = $rel;
+    }
+    
+    // Use defaults if the color index is <= 0
+    if ($colorIndex <= 0) {
+        for ($shape in $shapes) {
+            setAttr ($shape + ".overrideEnabled") 0;
+        }
+    }
+    else {
+        for ($shape in $shapes) {
+            setAttr ($shape + ".overrideEnabled") 1;
+            setAttr ($shape + ".overrideColor") $colorIndex;
+        }
+    }
+}
+
