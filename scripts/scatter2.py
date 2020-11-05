@@ -60,3 +60,11 @@ def scatter_objects(rand_trans, rand_rot, rand_scale):
 # Call the scatter objects definition. Each argument is passed in with the min and max random values.
 # In the case where you want noting to happen pass both min and max in as 0. scale will be 1.
 scatter_objects((0, 10), (0, 360), (0.5, 1.5))
+
+# if cmds.objectType(object_to_instance) == 'transform':
+#     for vertex in vertex_names:
+#         new_instance = cmds.instance(object_to_instance)
+#         position = cmds.pointPosition(vertex, world=True)
+#         cmds.move(position[0], position[1], position[2],  new_instance, absolute=True, worldSpace=True)
+# else:
+#     print("Please ensure the first object you select is a transform.")

@@ -1,15 +1,18 @@
 import maya.cmds as cmds
+import random as rand
 
 selectction = cmds.ls(orderedSelection=True, flatten=True)
 vertex_names = cmds.filterExpand(selectction, selectionMask=31, expand=True)
 
 
 object_to_instance = selectction[0]
+rand_pos = [0,0,0]
 
-if cmds.objectType(object_to_instance) == 'transform':
-    for vertex in vertex_names:
-        new_instance = cmds.instance(object_to_instance)
-        position = cmds.pointPosition(vertex, world=True)
-        cmds.move(position[0], position[1], position[2],  new_instance, absolute=True, worldSpace=True)
-else:
-    print("Please ensure the first object you select is a transform.")
+for object in object_to_instance:
+    rand_pos = [rand.randrange(-5,5),rand.randrange(-5,5),0]
+    new_instance = cmds.instance(object_to_instance)
+    cmds.move(rand_pos[0],rand_pos[1],rand_pos[2], absolute=True)
+
+
+
+
