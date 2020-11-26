@@ -20,9 +20,11 @@ class MainUI():
         self.name_field = cmds.textField(parent=self.col_layout,
                                          placeholderText='Name of new obj')
         cmds.button(parent=self.col_layout,label='sphere',
-                    c='self.createSphere()')
+                    c=lambda *x: self.createSphere())
         cmds.button(parent=self.col_layout, label='sphere',
                     c='print cmds.textField(name_field, q=True, text=true')
+
+        cmds.showWindow(self.my_window) # create window
 
     def delete(self):
         if cmds.window(self.my_window, exists = True):
